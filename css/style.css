@@ -1,24 +1,15 @@
+/* SPACE FOR THE SIDENAV */
 header, main, footer {
-  padding-left: 260px;
+   padding-left: 260px;
 }
 
-/*footer {
-   position: absolute;
-   right: 0;
-   bottom: 0;
-   left: 0;
-}*/
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+@media only screen and (max-width : 992px) {
+   header, main, footer {
+      padding-left: 0;
+   }
 }
 
-main {
-  flex: 1 0 auto;
-}
-
+/* STYLING THE SIDENAV */
 .side-nav li > a {
    padding-left: 15px !important;
 }
@@ -31,8 +22,117 @@ main {
    padding-left: 70px !important;
 }
 
-@media only screen and (max-width : 992px) {
-   header, main, footer {
-      padding-left: 0;
-   }
+.side-nav li.active > a, .side-nav li.active > a > i{
+   color: #000;
 }
+
+/* FOOTER FIXED */
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+main {
+   flex: 1 0 auto;
+}
+
+/*
+
+
+
+DATATABLES STYLE
+
+
+
+*/
+/*
+div.dataTables_wrapper div.dataTables_filter {
+   text-align: right !important
+}
+div.dataTables_wrapper div.dataTables_filter input {
+   margin-left: 0.5em !important
+}
+div.dataTables_wrapper div.dataTables_info {
+   padding-top: 10px !important;
+   white-space: nowrap !important
+}
+div.dataTables_wrapper div.dataTables_processing {
+   position: absolute !important;
+   top: 50% !important;
+   left: 50% !important;
+   width: 200px !important;
+   margin-left: -100px !important;
+   text-align: center !important
+}
+div.dataTables_wrapper div.dataTables_paginate {
+   text-align: right !important
+}
+div.dataTables_wrapper div.mdl-grid.dt-table {
+   padding-top: 0 !important;
+   padding-bottom: 0 !important
+}
+div.dataTables_wrapper div.mdl-grid.dt-table > div.mdl-cell {
+   margin-top: 0 !important;
+   margin-bottom: 0 !important
+}
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+   padding-right: 30px !important
+}
+table.dataTable thead > tr > th:active,
+table.dataTable thead > tr > td:active {
+   outline: none !important
+}
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+   cursor: pointer !important;
+   position: relative !important
+}
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:after {
+   position: absolute !important;
+   bottom: 11px !important;
+   display: block !important;
+   opacity: 0.3 !important;
+   font-size: 1.3em !important
+}
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before {
+   right: 1em !important;
+   content: "\2191" !important
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+   right: 0.5em !important;
+   content: "\2193" !important
+}
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:after {
+   opacity: 1 !important
+}
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:after {
+   opacity: 0 !important
+}*/

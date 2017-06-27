@@ -3,17 +3,18 @@
    <head>
       <meta charset="utf-8">
       <title>Bernardo Acosta</title>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+      <link href="fonts/materialicons/material-icons.css" rel="stylesheet">
       <link rel="stylesheet" href="css/materialize.css">
       <link rel="stylesheet" href="css/style.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
    </head>
-   <body class="grey lighten-4">
+   <body class="grey lighten-5">
 
-      <!-- NAVBAR -->
       <header>
-         <nav class="indigo darken-1 z-depth-2" role="navigation">
+         <!-- NAVBAR -->
+         <nav class="indigo z-depth-2" role="navigation">
             <div class="nav-wrapper">
                <div class="row">
                   <div class="col s1 hide-on-large-only">
@@ -41,9 +42,12 @@
                <a href="#"><span class="white-text email">silvamartinez67@gmail.com</span></a>
             </div></li>
             <!-- ENLACES -->
-            <li><a class="subheader black-text">MENÚ</a></li>
-            <li><a href="index.html" class="waves-effect waves-teal"><i class="material-icons">view_quilt</i>Inicio</a></li>
-            <li><a href="registerStudent.html" class="waves-effect waves-teal"><i class="material-icons">library_add</i>Registrar Alumno</a></li>
+            <li class="active"><a href="index.html" class="waves-effect waves-teal"><i class="material-icons">view_quilt</i>Inicio</a></li>
+            <li><a href="registrarAlumno.html" class="waves-effect waves-teal"><i class="material-icons">school</i>Registrar Alumno</a></li>
+            <li><a href="registrarPersonal.html" class="waves-effect waves-teal"><i class="material-icons">library_add</i>Registrar Personal</a></li>
+            <li><a href="estudiantes.html" class="waves-effect waves-teal"><i class="material-icons">view_list</i>Alumnos</a></li>
+            <!-- NOTE: EL REPRESENTANTE ES LA MADRE -->
+            <li><a href="representantes.html" class="waves-effect waves-teal"><i class="material-icons">view_list</i>Representantes</a></li>
             <li class="no-padding">
                <ul class="collapsible collapsible-accordion">
                   <li>
@@ -57,6 +61,27 @@
                   </li>
                   <li>
                      <a class="collapsible-header waves-effect waves-teal"><i class="material-icons">spellcheck</i>Asistencias<i class="material-icons right">arrow_drop_down</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#">Inicial</a></li>
+                           <li><a href="#">Primaria</a></li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li>
+                     <!-- NOTE:
+                        Inicial:
+                           - Total
+                           - Por Sala
+                           - Turno mañana (A, B)
+                           - Turno tarde (C, D)
+                        Primaria:
+                           - Total
+                           - Por Sala
+                           - Turno mañana (A, B)
+                           - Turno tarde (C, D)
+                     -->
+                     <a class="collapsible-header waves-effect waves-teal"><i class="material-icons">spellcheck</i>Matrícula<i class="material-icons right">arrow_drop_down</i></a>
                      <div class="collapsible-body">
                         <ul>
                            <li><a href="#">Inicial</a></li>
@@ -92,31 +117,31 @@
 
       <!-- FOOTER -->
       <footer class="indigo page-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">Company Bio</h5>
-              <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12">
+                  <h5 class="white-text">Company Bio</h5>
+                  <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+               </div>
+               <div class="col l3 s12">
+                  <h5 class="white-text">Settings</h5>
+                  <ul>
+                     <li><a class="white-text" href="#!">Link 1</a></li>
+                  </ul>
+               </div>
+               <div class="col l3 s12">
+                  <h5 class="white-text">Connect</h5>
+                  <ul>
+                     <li><a class="white-text" href="#!">Link 1</a></li>
+                  </ul>
+               </div>
             </div>
-            <div class="col l3 s12">
-              <h5 class="white-text">Settings</h5>
-              <ul>
-                <li><a class="white-text" href="#!">Link 1</a></li>
-              </ul>
+         </div>
+         <div class="footer-copyright">
+            <div class="container">
+               Copyright (c) 2017 Copyright Holder All Rights Reserved.
             </div>
-            <div class="col l3 s12">
-              <h5 class="white-text">Connect</h5>
-              <ul>
-                <li><a class="white-text" href="#!">Link 1</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-             Copyright (c) 2017 Copyright Holder All Rights Reserved.
-          </div>
-        </div>
+         </div>
       </footer>
 
       <script src="js/jquery.js" charset="utf-8"></script>

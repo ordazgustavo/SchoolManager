@@ -12,8 +12,8 @@
    </head>
    <body class="grey lighten-4">
 
-      <!-- NAVBAR -->
       <header>
+         <!-- NAVBAR -->
          <nav class="indigo darken-1 z-depth-2" role="navigation">
             <div class="nav-wrapper">
                <div class="row">
@@ -109,15 +109,15 @@
                                     <div class="col s2">
                                        <br>
                                        <p>
-                                          <input name="sexo" type="radio" id="masculino" value="Masculino">
-                                          <label for="masculino">Masculino</label>
+                                          <input name="sexo" type="radio" id="varon" value="Varón">
+                                          <label for="varon">Varón</label>
                                        </p>
                                     </div>
                                     <div class="col s2">
                                        <br>
                                        <p>
-                                          <input name="sexo" type="radio" id="femenino" value="Femenino">
-                                          <label for="femenino">Feminino</label>
+                                          <input name="sexo" type="radio" id="hembra" value="Hembra">
+                                          <label for="hembra">Hembra</label>
                                        </p>
                                     </div>
                                  </div>
@@ -513,36 +513,42 @@
 
       <!-- FOOTER -->
       <footer class="indigo page-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">Company Bio</h5>
-              <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12">
+                  <h5 class="white-text">Company Bio</h5>
+                  <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+               </div>
+               <div class="col l3 s12">
+                  <h5 class="white-text">Settings</h5>
+                  <ul>
+                     <li><a class="white-text" href="#!">Link 1</a></li>
+                  </ul>
+               </div>
+               <div class="col l3 s12">
+                  <h5 class="white-text">Connect</h5>
+                  <ul>
+                     <li><a class="white-text" href="#!">Link 1</a></li>
+                  </ul>
+               </div>
             </div>
-            <div class="col l3 s12">
-              <h5 class="white-text">Settings</h5>
-              <ul>
-                <li><a class="white-text" href="#!">Link 1</a></li>
-              </ul>
+         </div>
+         <div class="footer-copyright">
+            <div class="container">
+               Copyright (c) 2017 Copyright Holder All Rights Reserved.
             </div>
-            <div class="col l3 s12">
-              <h5 class="white-text">Connect</h5>
-              <ul>
-                <li><a class="white-text" href="#!">Link 1</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-             Copyright (c) 2017 Copyright Holder All Rights Reserved.
-          </div>
-        </div>
+         </div>
       </footer>
 
       <script src="js/jquery.js" charset="utf-8"></script>
       <script src="js/materialize.js" charset="utf-8"></script>
       <script src="js/materialize-stepper.js" charset="utf-8"></script>
       <script src="js/main.js" charset="utf-8"></script>
+
+      <script type="text/javascript">
+         $(document).ready(function() {
+            $('.stepper').activateStepper();
+         });
+      </script>
    </body>
 </html>

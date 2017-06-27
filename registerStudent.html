@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Bernardo Acosta</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="css/materialize.css">
+      <link rel="stylesheet" href="css/materialize-stepper.css">
+      <link rel="stylesheet" href="css/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+   </head>
+   <body class="grey lighten-4">
+
+      <!-- NAVBAR -->
+      <header>
+         <nav class="indigo darken-1 z-depth-2" role="navigation">
+            <div class="nav-wrapper">
+               <div class="row">
+                  <div class="col s1 hide-on-large-only">
+                     <a href="#" data-activates="slide-out" class="sidenav-collapse"><i class="material-icons">menu</i></a>
+                  </div>
+                  <div class="col s5">
+                     <a href="index.html" class="brand-logo">Bernardo Acosta</a>
+                  </div>
+                  <ul class="right hide-on-med-and-down">
+                     <li><a href="login.html">Cerrar Sesión</a></li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+
+         <!-- SIDENAV -->
+         <ul id="slide-out" class="side-nav fixed">
+            <!-- HEADER -->
+            <li><div class="user-view">
+               <div class="background">
+                  <img src="images/office.jpg">
+               </div>
+               <a href="#"><img class="circle" src="images/yuna.jpg"></a>
+               <a href="#"><span class="white-text name">Maria Silva</span></a>
+               <a href="#"><span class="white-text email">silvamartinez67@gmail.com</span></a>
+            </div></li>
+            <!-- ENLACES -->
+            <li><a class="subheader black-text">MENÚ</a></li>
+            <li><a href="index.html" class="waves-effect waves-teal"><i class="material-icons">view_quilt</i>Inicio</a></li>
+            <li><a href="registerStudent.html" class="waves-effect waves-teal"><i class="material-icons">library_add</i>Registrar Alumno</a></li>
+            <li class="no-padding">
+               <ul class="collapsible collapsible-accordion">
+                  <li>
+                     <a class="collapsible-header waves-effect waves-teal"><i class="material-icons">library_books</i>Constancias<i class="material-icons right">arrow_drop_down</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#!">De Estudio</a></li>
+                           <li><a href="#!">De Asistencia</a></li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li>
+                     <a class="collapsible-header waves-effect waves-teal"><i class="material-icons">spellcheck</i>Asistencias<i class="material-icons right">arrow_drop_down</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#">Inicial</a></li>
+                           <li><a href="#">Primaria</a></li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </header>
+
+
+
+      <!-- CONTENT -->
+      <main>
+         <div class="container">
+            <div class="row">
+               <div class="col s12">
+                  <div class="card-panel">
+                     <h3 class="header grey-text text-darken-2">Registrar Alumno</h3>
+                     <div class="divider"></div>
+                     <br>
+                     <form action="index.html" method="post">
+                        <ul class="stepper linear">
+                           <!-- PASO 1: DATOS DEL NIÑO(A) -->
+                           <li class="step active">
+                              <div class="step-title waves-effect">Datos del niño(a)</div>
+                              <div class="step-content">
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nombre" class="validate">
+                                       <label for="nombre" class="active">Nombre</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="apellido">
+                                       <label for="apellido" class="active">Apellido</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s4">
+                                       <input type="date" name="fecha_nacimiento" class="datepicker">
+                                       <label for="fecha_nacimiento" class="active">Fecha nacimiento</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="number" name="edad" class="validate">
+                                       <label for="edad" class="active">Edad</label>
+                                    </div>
+                                    <div class="col s2">
+                                       <br>
+                                       <p>
+                                          <input name="sexo" type="radio" id="masculino" value="Masculino">
+                                          <label for="masculino">Masculino</label>
+                                       </p>
+                                    </div>
+                                    <div class="col s2">
+                                       <br>
+                                       <p>
+                                          <input name="sexo" type="radio" id="femenino" value="Femenino">
+                                          <label for="femenino">Feminino</label>
+                                       </p>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="l_nacimiento" class="validate">
+                                       <label for="l_nacimiento" class="active">Lugar de nacimiento</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="direccion" class="validate">
+                                       <label for="direccion" class="active">Dirección de habitación</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <select name="procedencia">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <option value="Hogar">Hogar</option>
+                                          <option value="Del Mismo Plantel">Del Mismo Plantel</option>
+                                          <option value="Guardería">Guardería</option>
+                                          <option value="De Una U.E.">De Una U.E.</option>
+                                       </select>
+                                       <label>Procedencia</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                       <select name="grado">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <optgroup label="Inicial">
+                                             <option value="Sala 3">Sala 3</option>
+                                             <option value="Sala 4">Sala 4</option>
+                                             <option value="Sala 5">Sala 5</option>
+                                          </optgroup>
+                                          <optgroup label="Primaria">
+                                             <option value="Grado 1">Grado 1</option>
+                                             <option value="Grado 2">Grado 2</option>
+                                             <option value="Grado 3">Grado 3</option>
+                                             <option value="Grado 4">Grado 4</option>
+                                             <option value="Grado 5">Grado 5</option>
+                                             <option value="Grado 6">Grado 6</option>
+                                          </optgroup>
+                                       </select>
+                                       <label>Grado a cursar</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                       <select name="seccion">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <option value="A">A</option>
+                                          <option value="B">B</option>
+                                          <option value="C">C</option>
+                                          <option value="D">D</option>
+                                       </select>
+                                       <label>Sección</label>
+                                    </div>
+                                 </div>
+                                 <div class="step-actions right">
+                                    <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+                                 </div>
+                              </div>
+                           </li>
+
+
+                           <!-- PASO 2: GRUPO FAMILIAR (MADRE) -->
+                           <li class="step">
+                              <div class="step-title waves-effect">Madre</div>
+                              <div class="step-content">
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nombre_madre" class="validate">
+                                       <label for="nombre_madre" class="active">Nombre</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="apellido_madre" class="validate">
+                                       <label for="apellido_madre" class="active">Apellido</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="cedula_madre" class="validate">
+                                       <label for="cedula_madre">Cédula</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nacionalidad_madre" class="validate">
+                                       <label for="nacionalidad_madre" class="active">Nacionalidad</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <select name="civil_madre">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <option value="Soltera">Soltera</option>
+                                          <option value="Casada">Casada</option>
+                                          <option value="Divorciada">Divorciada</option>
+                                          <option value="Viuda">Viuda</option>
+                                       </select>
+                                       <label>Estado civil</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <select name="educación_madre">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <option value="Bachiller">Bachiller</option>
+                                          <option value="TSU">TSU</option>
+                                          <option value="Licenciado">Licenciado</option>
+                                          <option value="Otro">Otro</option>
+                                       </select>
+                                       <label>Grado de instrucción</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="profesion_madre" class="validate">
+                                       <label for="profesion_madre">Profesión u oficio</label>
+                                    </div>
+                                    <div class="col s6">
+                                       <br>
+                                       <input type="checkbox" id="trabaja_madre">
+                                       <label for="trabaja_madre">Trabaja?</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="l_trabajo_madre" class="validate">
+                                       <label for="l_trabajo_madre" class="active">Lugar de trabajo</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="d_trabajo_madre" class="validate">
+                                       <label for="d_trabajo_madre" class="active">Dirección de trabajo</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s4">
+                                       <input type="text" name="telefono_trabajo_madre" class="validate">
+                                       <label for="telefono_trabajo" class="active">Teléfono de trabajo</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="telefono_habitacion_madre" class="validate">
+                                       <label for="telefono_habitacion" class="active">Teléfono de habitación</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="telefono_movil_madre" class="validate">
+                                       <label for="telefono_movil" class="active">Teléfono de móvil</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col s4">
+                                       <br>
+                                       <input type="checkbox" id="alumnos_plantel">
+                                       <label for="alumnos_plantel">Tiene otros alumnos en el plantel?</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="number" name="cantidad_alumnos_plantel">
+                                       <label for="cantidad_alumnos_plantel">Cantidad</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <select name="grado_alumnos_plantel">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <optgroup label="Inicial">
+                                             <option value="Sala 3">Sala 3</option>
+                                             <option value="Sala 4">Sala 4</option>
+                                             <option value="Sala 5">Sala 5</option>
+                                          </optgroup>
+                                          <optgroup label="Primaria">
+                                             <option value="Grado 1">Grado 1</option>
+                                             <option value="Grado 2">Grado 2</option>
+                                             <option value="Grado 3">Grado 3</option>
+                                             <option value="Grado 4">Grado 4</option>
+                                             <option value="Grado 5">Grado 5</option>
+                                             <option value="Grado 6">Grado 6</option>
+                                          </optgroup>
+                                       </select>
+                                       <label>Grado a cursar</label>
+                                    </div>
+                                 </div>
+                                 <div class="step-actions right">
+                                    <button class="waves-effect waves-dark btn-flat previous-step">ATRAS</button>
+                                    <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+                                 </div>
+                              </div>
+                           </li>
+
+
+                           <!-- PASO 3: GRUPO FAMILIAR (MADRE) -->
+                           <li class="step">
+                              <div class="step-title waves-effect">Padre</div>
+                              <div class="step-content">
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nombre_padre" class="validate">
+                                       <label for="nombre_padre" class="active">Nombre</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="apellido_padre" class="validate">
+                                       <label for="apellido_padre" class="active">Apellido</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="cedula_padre" class="validate">
+                                       <label for="cedula_padre">Cédula</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nacionalidad_padre" class="validate">
+                                       <label for="nacionalidad_padre" class="active">Nacionalidad</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <select name="civil_padre">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <option value="Soltera">Soltera</option>
+                                          <option value="Casada">Casada</option>
+                                          <option value="Divorciada">Divorciada</option>
+                                          <option value="Viuda">Viuda</option>
+                                       </select>
+                                       <label>Estado civil</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <select name="educación_padre">
+                                          <option value="" disabled selected>Seleccionar...</option>
+                                          <option value="Bachiller">Bachiller</option>
+                                          <option value="TSU">TSU</option>
+                                          <option value="Licenciado">Licenciado</option>
+                                          <option value="Otro">Otro</option>
+                                       </select>
+                                       <label>Grado de instrucción</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="profesion_padre" class="validate">
+                                       <label for="profesion_padre">Profesión u oficio</label>
+                                    </div>
+                                    <div class="col s6">
+                                       <br>
+                                       <input type="checkbox" id="trabaja">
+                                       <label for="trabaja">Trabaja?</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="l_trabajo_padre" class="validate">
+                                       <label for="l_trabajo_padre" class="active">Lugar de trabajo</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="d_trabajo_padre" class="validate">
+                                       <label for="d_trabajo_padre" class="active">Dirección de trabajo</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s4">
+                                       <input type="text" name="telefono_trabajo_padre" class="validate">
+                                       <label for="telefono_trabajo" class="active">Teléfono de trabajo</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="telefono_habitacion_padre" class="validate">
+                                       <label for="telefono_habitacion" class="active">Teléfono de habitación</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="telefono_movil_padre" class="validate">
+                                       <label for="telefono_movil" class="active">Teléfono de móvil</label>
+                                    </div>
+                                 </div>
+                                 <div class="step-actions right">
+                                    <button class="waves-effect waves-dark btn-flat previous-step">ATRAS</button>
+                                    <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+                                 </div>
+                              </div>
+                           </li>
+
+
+                           <!-- PASO 4: REPRESENTANTE -->
+                           <li class="step">
+                              <div class="step-title waves-effect">Grupo familiar</div>
+                              <div class="step-content">
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nombre_representante" class="validate">
+                                       <label for="nombre_representante" class="active">Nombre</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="apellido_padre" class="validate">
+                                       <label for="apellido_representante" class="active">Apellido</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="cedula_representante" class="validate">
+                                       <label for="cedula_representante">Cédula</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="parentesco" class="validate" value="Madre">
+                                       <label for="parentesco" class="active">Parentesco</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s8">
+                                       <input type="text" name="direccion_representante" class="validate">
+                                       <label for="direccion_representante">Dirección</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="nacionalidad_representante" class="validate">
+                                       <label for="nacionalidad_representante" class="active">Teléfono</label>
+                                    </div>
+                                 </div>
+                                 <div class="step-actions right">
+                                    <button class="waves-effect waves-dark btn-flat previous-step">ATRAS</button>
+                                    <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+                                 </div>
+                              </div>
+                           </li>
+
+
+                           <!-- PASO 5: CONTACTO DE EMERGENCIA -->
+                           <li class="step">
+                              <div class="step-title waves-effect">Contacto de emergencia</div>
+                              <div class="step-content">
+                                 <h5>Contacto 1</h5>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nombre_emergencia1" class="validate">
+                                       <label for="nombre_emergencia1" class="active">Nombre</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="apellido_emergencia1" class="validate">
+                                       <label for="apellido_emergencia1" class="active">Apellido</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="cedula_emergencia1" class="validate">
+                                       <label for="cedula_emergencia1">Cédula</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="parentesco_emergencia1" class="validate" value="Madre">
+                                       <label for="parentesco_emergencia1" class="active">Parentesco</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s8">
+                                       <input type="text" name="direccion_emergencia1" class="validate">
+                                       <label for="direccion_emergencia1">Dirección</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="nacionalidad_emergencia1" class="validate">
+                                       <label for="nacionalidad_representante1" class="active">Teléfono</label>
+                                    </div>
+                                 </div>
+
+                                 <h5>Contacto 2</h5>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="nombre_emergencia2" class="validate">
+                                       <label for="nombre_emergencia2" class="active">Nombre</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="apellido_emergencia2" class="validate">
+                                       <label for="apellido_emergencia2" class="active">Apellido</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                       <input type="text" name="cedula_emergencia2" class="validate">
+                                       <label for="cedula_emergencia2">Cédula</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                       <input type="text" name="parentesco_emergencia2" class="validate">
+                                       <label for="parentesco_emergencia2" class="active">Parentesco</label>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="input-field col s8">
+                                       <input type="text" name="direccion_emergencia2" class="validate">
+                                       <label for="direccion_emergencia2">Dirección</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                       <input type="text" name="nacionalidad_emergencia2" class="validate">
+                                       <label for="nacionalidad_representante2" class="active">Teléfono</label>
+                                    </div>
+                                 </div>
+                                 <div class="step-actions right">
+                                    <button class="waves-effect waves-dark btn" type="submit">GUADAR</button>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+
+
+
+      <!-- FOOTER -->
+      <footer class="indigo page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">Company Bio</h5>
+              <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+            </div>
+            <div class="col l3 s12">
+              <h5 class="white-text">Settings</h5>
+              <ul>
+                <li><a class="white-text" href="#!">Link 1</a></li>
+              </ul>
+            </div>
+            <div class="col l3 s12">
+              <h5 class="white-text">Connect</h5>
+              <ul>
+                <li><a class="white-text" href="#!">Link 1</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+             Copyright (c) 2017 Copyright Holder All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+
+      <script src="js/jquery.js" charset="utf-8"></script>
+      <script src="js/materialize.js" charset="utf-8"></script>
+      <script src="js/materialize-stepper.js" charset="utf-8"></script>
+      <script src="js/main.js" charset="utf-8"></script>
+   </body>
+</html>

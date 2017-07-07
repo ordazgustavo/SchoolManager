@@ -25,23 +25,15 @@
 
       <md-list>
         <md-list-item @click.native="$refs.leftSidenav.close()">
-          <router-link v-bind:to="'/'"><md-icon>dashboard</md-icon> <span>Inicio</span></router-link>
+          <router-link v-bind:to="'/'" exact><md-icon>dashboard</md-icon> <span>Inicio</span></router-link>
         </md-list-item>
 
         <md-list-item @click.native="$refs.leftSidenav.close()">
-          <router-link v-bind:to="'/alumnos/registrar'"><md-icon>school</md-icon> <span>Registrar Alumno</span></router-link>
+          <router-link v-bind:to="'/alumnos'" exact><md-icon>school</md-icon> <span>Alumnos</span></router-link>
         </md-list-item>
 
-        <md-list-item>
-          <md-icon>access_time</md-icon> <span>Recent</span>
-        </md-list-item>
-
-        <md-list-item>
-          <md-icon>start</md-icon> <span>Starred</span>
-        </md-list-item>
-
-        <md-list-item>
-          <md-icon>delete</md-icon> <span>Trash</span>
+        <md-list-item @click.native="$refs.leftSidenav.close()">
+          <router-link v-bind:to="'/alumnos/registrar'" exact><md-icon>school</md-icon> <span>Registrar Alumno</span></router-link>
         </md-list-item>
       </md-list>
     </md-sidenav>
@@ -106,6 +98,10 @@ export default {
     }
   }
 
+  .stepper {
+    background-color: #fff;
+  }
+
   .card {
     width: 100%;
   }
@@ -120,6 +116,14 @@ export default {
 
   .pd-b-35 {
     padding-bottom: 35px;
+  }
+
+  .pd-r-35 {
+    padding-right: 35px;
+  }
+
+  .pd-l-35 {
+    padding-left: 35px;
   }
 
   input[type=date]::-webkit-clear-button,

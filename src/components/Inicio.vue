@@ -1,7 +1,7 @@
 <template>
   <div class="inicio">
 
-    <md-layout md-gutter md-align="center" class="card">
+    <md-layout md-gutter md-align="center" class="pd-t-35">
       <md-layout md-flex-xsmall="50" md-flex="70">
         <md-card md-with-hover>
           <md-card-header>
@@ -31,5 +31,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-  
+
 </style>

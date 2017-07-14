@@ -186,7 +186,7 @@ export default {
     },
 
     fetchAlumnos() {
-      axios.get('http://slimapp/api/alumnos')
+      axios.get('http://jsonplaceholder.typicode.com/posts')
         .then(response => {
           this.alumnos = response.data;
         }).catch(e => {

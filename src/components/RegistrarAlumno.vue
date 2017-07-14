@@ -3,7 +3,6 @@
     <md-layout md-gutter md-align="center" class="pd-t-35">
       <md-layout md-flex="80">
         <h2>Registrar Alumno</h2>
-        <h2 v-if="alert" v-bind:message="alert"></h2>
       </md-layout>
     </md-layout>
 
@@ -170,7 +169,7 @@
               <md-layout>
                 <md-input-container>
                   <label for="instruccion">Grado de instrucción</label>
-                  <md-select name="instruccion" id="instruccion" v-model="alumno.instruccion">
+                  <md-select name="instruccion" id="instruccion" v-model="madre.instruccion">
                     <md-option value="Bachiller">Bachiller</md-option>
                     <md-option value="TSU">TSU</md-option>
                     <md-option value="Licenciado">Licenciado</md-option>
@@ -244,18 +243,8 @@
 
               <md-layout>
                 <md-input-container>
-                  <label for="grados">Grados</label>
-                  <md-select name="grados" id="grados" multiple v-model="madre.grados" :disabled="!madre.otros_alumnos == 1 ? true : false">
-                    <md-option value="Sala 3">Sala 3</md-option>
-                    <md-option value="Sala 4">Sala 4</md-option>
-                    <md-option value="Sala 5">Sala 5</md-option>
-                    <md-option value="1">1</md-option>
-                    <md-option value="2">2</md-option>
-                    <md-option value="3">3</md-option>
-                    <md-option value="4">4</md-option>
-                    <md-option value="5">5</md-option>
-                    <md-option value="6">6</md-option>
-                  </md-select>
+                  <label>Grados</label>
+                  <md-input v-model="madre.grados" :disabled="!madre.otros_alumnos == 1 ? true : false"></md-input>
                 </md-input-container>
               </md-layout>
             </md-layout>
@@ -309,7 +298,7 @@
               <md-layout>
                 <md-input-container>
                   <label for="instruccion">Grado de instrucción</label>
-                  <md-select name="instruccion" id="instruccion" v-model="alumno.instruccion">
+                  <md-select name="instruccion" id="instruccion" v-model="padre.instruccion">
                     <md-option value="Bachiller">Bachiller</md-option>
                     <md-option value="TSU">TSU</md-option>
                     <md-option value="Licenciado">Licenciado</md-option>
@@ -527,7 +516,7 @@ export default {
   name: 'registrar-alumno',
   data () {
     return {
-      alert: '',
+      alerta: {},
 
       alumno: {
         cedula_escolar: '',
@@ -607,30 +596,15 @@ export default {
     }
   },
   methods: {
+    openDialog(ref) {
+      this.$refs[ref].open();
+    },
+
+    closeDialog(ref) {
+      this.$refs[ref].close();
+    },
+
     onSubmit() {
-      let alumno = {
-        cedula_escolar: this.alumno.cedula_escolar,
-        nombre: this.alumno.nombre,
-        apellido: this.alumno.apellido,
-        l_nacimiento: this.alumno.l_nacimiento,
-        f_nacimiento: this.alumno.f_nacimiento,
-        edad: this.alumno.edad,
-        sexo: this.alumno.sexo,
-        procedencia: this.alumno.procedencia,
-        habitacion: this.alumno.habitacion,
-        grado: this.alumno.grado,
-        seccion: this.alumno.seccion
-      }
-
-      axios.post('http://slimapp/api/alumnos/agregar', alumno)
-        .then(function (response) {
-          console.log(response);
-          this.$router.push({path: '/', query: {alert: 'Alumno creado'}});
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
       let madre = {
         nombre: this.madre.nombre,
         apellido: this.madre.apellido,
@@ -647,8 +621,16 @@ export default {
         tlf_movil: this.madre.tlf_movil,
         otros_alumnos: this.madre.otros_alumnos,
         cantidad: this.madre.cantidad,
-        grado: this.madre.grado
+        grados: this.madre.grados
       }
+
+      axios.post('http://slimapp/api/madres/agregar', madre)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
       let padre = {
         nombre: this.padre.nombre,
@@ -666,34 +648,137 @@ export default {
         tlf_movil: this.padre.tlf_movil
       }
 
+      axios.post('http://slimapp/api/padres/agregar', padre)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      let alumno = {
+        cedula_escolar: this.alumno.cedula_escolar,
+        cedula_madre: this.madre.cedula,
+        cedula_padre: this.padre.cedula,
+        nombre: this.alumno.nombre,
+        apellido: this.alumno.apellido,
+        l_nacimiento: this.alumno.l_nacimiento,
+        f_nacimiento: this.alumno.f_nacimiento,
+        edad: this.alumno.edad,
+        sexo: this.alumno.sexo,
+        procedencia: this.alumno.procedencia,
+        habitacion: this.alumno.habitacion,
+        grado: this.alumno.grado,
+        seccion: this.alumno.seccion
+      }
+
+      axios.post('http://slimapp/api/alumnos/agregar', alumno)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
       let representante = {
         nombre: this.representante.nombre,
         apellido: this.representante.apellido,
         cedula: this.representante.cedula,
         parentesco: this.representante.parentesco,
         direccion: this.representante.direccion,
-        tlf_movil: this.representante.tlf_movil
+        telefono: this.representante.telefono
       }
 
-      let contacto1 = {
-        nombre: this.contacto1.nombre,
-        apellido: this.contacto1.apellido,
-        cedula: this.contacto1.cedula,
-        parentesco: this.contacto1.parentesco,
-        direccion: this.contacto1.direccion,
-        tlf_movil: this.contacto1.tlf_movil
+      axios.post('http://slimapp/api/representantes/agregar', representante)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      let alRep = {
+        cedula_alumno: this.alumno.cedula_escolar,
+        cedula_representante: this.representante.cedula,
+        tipo: 'Representante'
       }
 
-      let contacto2 = {
-        nombre: this.contacto2.nombre,
-        apellido: this.contacto2.apellido,
-        cedula: this.contacto2.cedula,
-        parentesco: this.contacto2.parentesco,
-        direccion: this.contacto2.direccion,
-        tlf_movil: this.contacto2.tlf_movil
+      axios.post('http://slimapp/api/alRep/agregar', alRep)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      if (this.contacto1.cedula != '') {
+        let contacto1 = {
+          nombre: this.contacto1.nombre,
+          apellido: this.contacto1.apellido,
+          cedula: this.contacto1.cedula,
+          parentesco: this.contacto1.parentesco,
+          direccion: this.contacto1.direccion,
+          telefono: this.contacto1.telefono
+        }
+
+        axios.post('http://slimapp/api/representantes/agregar', contacto1)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        let alCon1 = {
+          cedula_alumno: this.alumno.cedula_escolar,
+          cedula_representante: this.contacto1.cedula,
+          tipo: 'Contacto'
+        }
+
+        axios.post('http://slimapp/api/alRep/agregar', alCon1)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
-      console.log(alumno);
+
+      if (this.contacto2.cedula != '') {
+        let contacto2 = {
+          nombre: this.contacto2.nombre,
+          apellido: this.contacto2.apellido,
+          cedula: this.contacto2.cedula,
+          parentesco: this.contacto2.parentesco,
+          direccion: this.contacto2.direccion,
+          telefono: this.contacto2.telefono
+        }
+
+        axios.post('http://slimapp/api/representantes/agregar', contacto2)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        let alCon2 = {
+          cedula_alumno: this.alumno.cedula_escolar,
+          cedula_representante: this.contacto2.cedula,
+          tipo: 'Contacto'
+        }
+
+        axios.post('http://slimapp/api/alRep/agregar', alCon2)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     },
+
+
     fecha() {
       let hoy = new Date();
       let final = hoy.getFullYear().toString().slice(2,4);

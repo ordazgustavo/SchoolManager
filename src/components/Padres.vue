@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="madres">
+  <div class="padres">
     <md-layout md-gutter md-align="center" class="pd-t-35">
       <md-layout md-flex="80">
-        <h2>Madres</h2>
+        <h2>Padres</h2>
       </md-layout>
     </md-layout>
 
@@ -35,11 +35,7 @@
                   <strong>Teléfono de trabajo: </strong> {{ alerta.tlf_trabajo }}<br>
                 </span>
                 <strong>Teléfono de habitación: </strong> {{ alerta.tlf_habitacion }}<br>
-                <strong>Teléfono de móvil: </strong> {{ alerta.tlf_movil }}<br>
-                <span v-if="alerta.otros_alumnos">
-                  <strong>Otros alumnos: </strong> {{ alerta.cantidad }}<br>
-                  <strong>Grados: </strong> {{ alerta.grados }}
-                </span></p>
+                <strong>Teléfono de móvil: </strong> {{ alerta.tlf_movil }}</p>
               </div>
             </md-dialog-content>
 
@@ -61,15 +57,15 @@
               </md-table-row>
             </md-table-header>
 
-            <md-table-body v-if="madres && madres.length">
-              <md-table-row v-for="madre of filtrar(madres, filtroGen)" :key="madre.cedula">
-                <md-table-cell :key="madre.cedula">{{ madre.cedula }}</md-table-cell>
-                <md-table-cell>{{ madre.nombre }} {{ madre.apellido }}</md-table-cell>
-                <md-table-cell>{{ madre.estado_civil }}</md-table-cell>
-                <md-table-cell>{{ madre.tlf_habitacion }}</md-table-cell>
-                <md-table-cell>{{ madre.tlf_movil }}</md-table-cell>
+            <md-table-body v-if="padres && padres.length">
+              <md-table-row v-for="padre of filtrar(padres, filtroGen)" :key="padre.cedula">
+                <md-table-cell :key="padre.cedula">{{ padre.cedula }}</md-table-cell>
+                <md-table-cell>{{ padre.nombre }} {{ padre.apellido }}</md-table-cell>
+                <md-table-cell>{{ padre.estado_civil }}</md-table-cell>
+                <md-table-cell>{{ padre.tlf_habitacion }}</md-table-cell>
+                <md-table-cell>{{ padre.tlf_movil }}</md-table-cell>
                 <md-table-cell>
-                  <md-button class="md-icon-button" id="custom" @click="openDialog('dialogo', madre)">
+                  <md-button class="md-icon-button" id="custom" @click="openDialog('dialogo', padre)">
                     <md-icon>remove_red_eye</md-icon>
                   </md-button>
                 </md-table-cell>
@@ -79,7 +75,7 @@
 
           <md-table-pagination
             md-size="5"
-            :md-total="madres.length"
+            :md-total="padres.length"
             md-page="1"
             md-label="Filas"
             md-separator="de"
@@ -96,7 +92,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'madres',
+  name: 'padres',
   data: () => ({
     alerta: {
       nombre: '',
@@ -111,12 +107,9 @@ export default {
       d_trabajo: '',
       tlf_trabajo: '',
       tlf_habitacion: '',
-      tlf_movil: '',
-      otros_alumnos: '',
-      cantidad: '',
-      grados: ''
+      tlf_movil: ''
     },
-    madres: [],
+    padres: [],
     errors: [],
     filtroGen: '',
     filtroSexo: '',
@@ -125,24 +118,20 @@ export default {
   }),
 
   methods: {
-    openDialog(ref, madre) {
-      this.alerta.nombre = madre.nombre;
-      this.alerta.apellido = madre.apellido;
-      this.alerta.cedula = madre.cedula;
-      this.alerta.nacionalidad = madre.nacionalidad;
-      this.alerta.estado_civil = madre.estado_civil;
-      this.alerta.instruccion = madre.instruccion;
-      this.alerta.profesion = madre.profesion;
-      this.alerta.trabaja = madre.trabaja;
-      this.alerta.l_trabajo = madre.l_trabajo;
-      this.alerta.d_trabajo = madre.d_trabajo;
-      this.alerta.tlf_trabajo = madre.tlf_trabajo;
-      this.alerta.tlf_habitacion = madre.tlf_habitacion;
-      this.alerta.tlf_movil = madre.tlf_movil;
-      this.alerta.otros_alumnos = madre.otros_alumnos;
-      this.alerta.cantidad = madre.cantidad;
-      this.alerta.grados = madre.grados;
-
+    openDialog(ref, padre) {
+      this.alerta.nombre = padre.nombre;
+      this.alerta.apellido = padre.apellido;
+      this.alerta.cedula = padre.cedula;
+      this.alerta.nacionalidad = padre.nacionalidad;
+      this.alerta.estado_civil = padre.estado_civil;
+      this.alerta.instruccion = padre.instruccion;
+      this.alerta.profesion = padre.profesion;
+      this.alerta.trabaja = padre.trabaja;
+      this.alerta.l_trabajo = padre.l_trabajo;
+      this.alerta.d_trabajo = padre.d_trabajo;
+      this.alerta.tlf_trabajo = padre.tlf_trabajo;
+      this.alerta.tlf_habitacion = padre.tlf_habitacion;
+      this.alerta.tlf_movil = padre.tlf_movil;
 
       this.$refs[ref].open();
     },
@@ -160,9 +149,9 @@ export default {
     },
 
     fetchAlumnos() {
-      axios.get('http://slimapp/api/madres')
+      axios.get('http://slimapp/api/padres')
         .then(response => {
-          this.madres = response.data;
+          this.padres = response.data;
         }).catch(e => {
           this.errors.push(e);
         });
@@ -171,10 +160,10 @@ export default {
     filtrar(list, value){
       value = value.charAt(0).toLowerCase() + value.slice(1).toLowerCase();
 
-      return list.filter(madre => {
-          return madre.cedula.indexOf(value) != -1
-              || madre.nombre.toLowerCase().indexOf(value) != -1
-              || madre.apellido.toLowerCase().indexOf(value) != -1;
+      return list.filter(padre => {
+          return padre.cedula.indexOf(value) != -1
+              || padre.nombre.toLowerCase().indexOf(value) != -1
+              || padre.apellido.toLowerCase().indexOf(value) != -1;
       });
     }
   },

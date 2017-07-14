@@ -33,6 +33,23 @@
         </md-list-item>
 
         <md-list-item @click.native="$refs.leftSidenav.close()">
+          <router-link v-bind:to="'/posts'" exact><md-icon>school</md-icon> <span>Posts</span></router-link>
+        </md-list-item>
+
+        <md-list-item @click.native="$refs.leftSidenav.close()">
+          <router-link v-bind:to="'/madres'" exact><md-icon>school</md-icon> <span>Madres</span></router-link>
+        </md-list-item>
+
+        <md-list-item @click.native="$refs.leftSidenav.close()">
+          <router-link v-bind:to="'/padres'" exact><md-icon>school</md-icon> <span>Padres</span></router-link>
+        </md-list-item>
+
+        <md-list-item @click.native="$refs.leftSidenav.close()">
+          <router-link v-bind:to="'/representantes'" exact><md-icon>school</md-icon> <span>Representantes</span></router-link>
+        </md-list-item>
+
+
+        <md-list-item @click.native="$refs.leftSidenav.close()">
           <router-link v-bind:to="'/alumnos/registrar'" exact><md-icon>school</md-icon> <span>Registrar Alumno</span></router-link>
         </md-list-item>
       </md-list>

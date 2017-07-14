@@ -33,6 +33,10 @@
         </md-list-item>
 
         <md-list-item @click.native="$refs.leftSidenav.close()">
+          <router-link v-bind:to="'/posts'" exact><md-icon>school</md-icon> <span>Posts</span></router-link>
+        </md-list-item>
+
+        <md-list-item @click.native="$refs.leftSidenav.close()">
           <router-link v-bind:to="'/madres'" exact><md-icon>school</md-icon> <span>Madres</span></router-link>
         </md-list-item>
 

@@ -6,6 +6,7 @@ import Alumnos from '@/components/Alumnos'
 import Madres from '@/components/Madres'
 import Padres from '@/components/Padres'
 import Representantes from '@/components/Representantes'
+import Posts from '@/components/Posts'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ export default new VueRouter({
       path: '/representantes',
       name: 'Representantes',
       component: Representantes
+    },
+    {
+      path: '/posts',
+      name: 'Posts',
+      component: Posts
     }
   ]
 })

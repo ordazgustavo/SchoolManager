@@ -118,7 +118,6 @@
                 </md-input-container>
               </md-layout>
             </md-layout>
-
           </md-step>
 
           <md-step md-label="Madre" md-button-continue="continuar" md-button-back="volver">
@@ -126,7 +125,8 @@
               <md-layout>
                 <md-input-container>
                   <label>Cédula</label>
-                  <md-input v-model="madre.cedula"></md-input>
+                  <md-input v-model="madre.cedula" @keyup.enter.native="fetchMadre" @keyup.tab.native="fetchMadre" @focusout.native="fetchMadre"></md-input>
+                  <md-spinner :md-size="20" :md-stroke="2" md-indeterminate class="md-accent" v-if="madre.status"></md-spinner>
                 </md-input-container>
               </md-layout>
 
@@ -255,7 +255,8 @@
               <md-layout>
                 <md-input-container>
                   <label>Cédula</label>
-                  <md-input v-model="padre.cedula"></md-input>
+                  <md-input v-model="padre.cedula" @keyup.enter.native="fetchPadre" @keyup.tab.native="fetchPadre" @focusout.native="fetchPadre"></md-input>
+                  <md-spinner :md-size="20" :md-stroke="2" md-indeterminate class="md-accent" v-if="madre.status"></md-spinner>
                 </md-input-container>
               </md-layout>
 
@@ -364,7 +365,8 @@
               <md-layout>
                 <md-input-container>
                   <label>Cédula</label>
-                  <md-input v-model="representante.cedula"></md-input>
+                  <md-input v-model="representante.cedula" @keyup.enter.native="fetchRepresentante" @keyup.tab.native="fetchRepresentante" @focusout.native="fetchRepresentante"></md-input>
+                  <md-spinner :md-size="20" :md-stroke="2" md-indeterminate class="md-accent" v-if="madre.status"></md-spinner>
                 </md-input-container>
               </md-layout>
 
@@ -413,7 +415,8 @@
               <md-layout>
                 <md-input-container>
                   <label>Cédula</label>
-                  <md-input v-model="contacto1.cedula"></md-input>
+                  <md-input v-model="contacto1.cedula" @keyup.enter.native="fetchContacto1" @keyup.tab.native="fetchContacto1" @focusout.native="fetchContacto1"></md-input>
+                  <md-spinner :md-size="20" :md-stroke="2" md-indeterminate class="md-accent" v-if="madre.status"></md-spinner>
                 </md-input-container>
               </md-layout>
 
@@ -461,7 +464,7 @@
               <md-layout>
                 <md-input-container>
                   <label>Cédula</label>
-                  <md-input v-model="contacto2.cedula"></md-input>
+                  <md-input v-model="contacto2.cedula" @keyup.enter.native="fetchContacto2" @keyup.tab.native="fetchContacto2" @focusout.native="fetchContacto2"></md-input>
                 </md-input-container>
               </md-layout>
 
@@ -519,24 +522,24 @@ export default {
       alerta: {},
 
       alumno: {
-        cedula_escolar: '',
-        nombre: '',
-        apellido: '',
-        l_nacimiento: '',
-        f_nacimiento: '',
-        edad: '',
-        sexo: '',
-        procedencia: '',
-        habitacion: '',
-        grado: '',
-        seccion: ''
+        cedula_escolar: '22621365',
+        nombre: 'Gustavo',
+        apellido: 'Ordaz',
+        l_nacimiento: 'la asuncion',
+        f_nacimiento: '11/08/1994',
+        edad: '22',
+        sexo: 'Varón',
+        procedencia: 'Hogar',
+        habitacion: 'Pampatar',
+        grado: 'Sala 3',
+        seccion: 'B'
       },
 
       madre: {
         nombre: '',
         apellido: '',
         cedula: '',
-        nacionalidad: 'Venezolana',
+        nacionalidad: '',
         estado_civil: '',
         instruccion: '',
         profesion: '',
@@ -548,14 +551,15 @@ export default {
         tlf_movil: '',
         otros_alumnos: '',
         cantidad: '',
-        grados: ''
+        grados: '',
+        status: false
       },
 
       padre: {
         nombre: '',
         apellido: '',
         cedula: '',
-        nacionalidad: 'Venezolana',
+        nacionalidad: '',
         estado_civil: '',
         instruccion: '',
         profesion: '',
@@ -564,7 +568,8 @@ export default {
         d_trabajo: '',
         tlf_trabajo: '',
         tlf_habitacion: '',
-        tlf_movil: ''
+        tlf_movil: '',
+        status: false
       },
 
       representante: {
@@ -573,7 +578,8 @@ export default {
         cedula: '',
         parentesco: '',
         direccion: '',
-        telefono: ''
+        telefono: '',
+        status: false
       },
 
       contacto1: {
@@ -582,7 +588,8 @@ export default {
         cedula: '',
         parentesco: '',
         direccion: '',
-        telefono: ''
+        telefono: '',
+        status: false
       },
 
       contacto2: {
@@ -591,7 +598,8 @@ export default {
         cedula: '',
         parentesco: '',
         direccion: '',
-        telefono: ''
+        telefono: '',
+        status: false
       }
     }
   },
@@ -605,59 +613,7 @@ export default {
     },
 
     onSubmit() {
-      let madre = {
-        nombre: this.madre.nombre,
-        apellido: this.madre.apellido,
-        cedula: this.madre.cedula,
-        nacionalidad: this.madre.nacionalidad,
-        estado_civil: this.madre.estado_civil,
-        instruccion: this.madre.instruccion,
-        profesion: this.madre.profesion,
-        trabaja: this.madre.trabaja,
-        l_trabajo: this.madre.l_trabajo,
-        d_trabajo: this.madre.d_trabajo,
-        tlf_trabajo: this.madre.tlf_trabajo,
-        tlf_habitacion: this.madre.tlf_habitacion,
-        tlf_movil: this.madre.tlf_movil,
-        otros_alumnos: this.madre.otros_alumnos,
-        cantidad: this.madre.cantidad,
-        grados: this.madre.grados
-      }
-
-      axios.post('http://slimapp/api/madres/agregar', madre)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
-      let padre = {
-        nombre: this.padre.nombre,
-        apellido: this.padre.apellido,
-        cedula: this.padre.cedula,
-        nacionalidad: this.padre.nacionalidad,
-        estado_civil: this.padre.estado_civil,
-        instruccion: this.padre.instruccion,
-        profesion: this.padre.profesion,
-        trabaja: this.padre.trabaja,
-        l_trabajo: this.padre.l_trabajo,
-        d_trabajo: this.padre.d_trabajo,
-        tlf_trabajo: this.padre.tlf_trabajo,
-        tlf_habitacion: this.padre.tlf_habitacion,
-        tlf_movil: this.padre.tlf_movil
-      }
-
-      axios.post('http://slimapp/api/padres/agregar', padre)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
       let alumno = {
-        cedula_escolar: this.alumno.cedula_escolar,
         cedula_madre: this.madre.cedula,
         cedula_padre: this.padre.cedula,
         nombre: this.alumno.nombre,
@@ -672,7 +628,7 @@ export default {
         seccion: this.alumno.seccion
       }
 
-      axios.post('http://slimapp/api/alumnos/agregar', alumno)
+      axios.put('https://bernardoacosta-da3f2.firebaseio.com/alumnos/' + this.alumno.cedula_escolar + '.json', alumno)
         .then(function (response) {
           console.log(response);
         })
@@ -680,48 +636,100 @@ export default {
           console.log(error);
         });
 
-      let representante = {
-        nombre: this.representante.nombre,
-        apellido: this.representante.apellido,
-        cedula: this.representante.cedula,
-        parentesco: this.representante.parentesco,
-        direccion: this.representante.direccion,
-        telefono: this.representante.telefono
+      if (this.madre.cedula != '') {
+        let madre = {
+          nombre: this.madre.nombre,
+          apellido: this.madre.apellido,
+          nacionalidad: this.madre.nacionalidad,
+          estado_civil: this.madre.estado_civil,
+          instruccion: this.madre.instruccion,
+          profesion: this.madre.profesion,
+          trabaja: this.madre.trabaja,
+          l_trabajo: this.madre.l_trabajo,
+          d_trabajo: this.madre.d_trabajo,
+          tlf_trabajo: this.madre.tlf_trabajo,
+          tlf_habitacion: this.madre.tlf_habitacion,
+          tlf_movil: this.madre.tlf_movil,
+          otros_alumnos: this.madre.otros_alumnos,
+          cantidad: this.madre.cantidad,
+          grados: this.madre.grados
+        }
+
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/madres/' + this.madre.cedula + '.json', madre)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
 
-      axios.post('http://slimapp/api/representantes/agregar', representante)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      if (this.padre.cedula != '') {
+        let padre = {
+          nombre: this.padre.nombre,
+          apellido: this.padre.apellido,
+          nacionalidad: this.padre.nacionalidad,
+          estado_civil: this.padre.estado_civil,
+          instruccion: this.padre.instruccion,
+          profesion: this.padre.profesion,
+          trabaja: this.padre.trabaja,
+          l_trabajo: this.padre.l_trabajo,
+          d_trabajo: this.padre.d_trabajo,
+          tlf_trabajo: this.padre.tlf_trabajo,
+          tlf_habitacion: this.padre.tlf_habitacion,
+          tlf_movil: this.padre.tlf_movil
+        }
 
-      let alRep = {
-        cedula_alumno: this.alumno.cedula_escolar,
-        cedula_representante: this.representante.cedula,
-        tipo: 'Representante'
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/padres/' + this.padre.cedula + '.json', padre)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
 
-      axios.post('http://slimapp/api/alRep/agregar', alRep)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      if (this.representante.cedula != '') {
+        let representante = {
+          nombre: this.representante.nombre,
+          apellido: this.representante.apellido,
+          parentesco: this.representante.parentesco,
+          direccion: this.representante.direccion,
+          telefono: this.representante.telefono
+        }
+
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/representantes/' + this.representante.cedula + '.json', representante)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        let alRep = {
+          representante: this.representante.cedula
+        }
+
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/alumnos_representantes/' + this.alumno.cedula_escolar + '.json', alRep)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
 
       if (this.contacto1.cedula != '') {
         let contacto1 = {
           nombre: this.contacto1.nombre,
           apellido: this.contacto1.apellido,
-          cedula: this.contacto1.cedula,
           parentesco: this.contacto1.parentesco,
           direccion: this.contacto1.direccion,
           telefono: this.contacto1.telefono
         }
 
-        axios.post('http://slimapp/api/representantes/agregar', contacto1)
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/representantes/' + this.contacto1.cedula + '.json', contacto1)
           .then(function (response) {
             console.log(response);
           })
@@ -730,12 +738,10 @@ export default {
           });
 
         let alCon1 = {
-          cedula_alumno: this.alumno.cedula_escolar,
-          cedula_representante: this.contacto1.cedula,
-          tipo: 'Contacto'
+          contacto1: this.contacto1.cedula
         }
 
-        axios.post('http://slimapp/api/alRep/agregar', alCon1)
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/alumnos_representantes/' + this.alumno.cedula_escolar + '.json', alCon1)
           .then(function (response) {
             console.log(response);
           })
@@ -748,13 +754,12 @@ export default {
         let contacto2 = {
           nombre: this.contacto2.nombre,
           apellido: this.contacto2.apellido,
-          cedula: this.contacto2.cedula,
           parentesco: this.contacto2.parentesco,
           direccion: this.contacto2.direccion,
           telefono: this.contacto2.telefono
         }
 
-        axios.post('http://slimapp/api/representantes/agregar', contacto2)
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/representantes/' + this.contacto2.cedula + '.json', contacto2)
           .then(function (response) {
             console.log(response);
           })
@@ -763,12 +768,10 @@ export default {
           });
 
         let alCon2 = {
-          cedula_alumno: this.alumno.cedula_escolar,
-          cedula_representante: this.contacto2.cedula,
-          tipo: 'Contacto'
+          contacto2: this.contacto2.cedula
         }
 
-        axios.post('http://slimapp/api/alRep/agregar', alCon2)
+        axios.put('https://bernardoacosta-da3f2.firebaseio.com/alumnos_representantes/' + this.alumno.cedula_escolar + '.json', alCon2)
           .then(function (response) {
             console.log(response);
           })
@@ -778,6 +781,122 @@ export default {
       }
     },
 
+    fetchMadre() {
+      this.madre.status = true;
+      let cedula = this.madre.cedula;
+      cedula = parseInt(cedula);
+      if (cedula >= 1000000) {
+        axios.get('https://bernardoacosta-da3f2.firebaseio.com/madres/' + this.madre.cedula + '.json')
+          .then(response => {
+            this.madre.nombre = response.data.nombre;
+            this.madre.apellido = response.data.apellido;
+            this.madre.nacionalidad = response.data.nacionalidad;
+            this.madre.estado_civil = response.data.estado_civil;
+            this.madre.instruccion = response.data.instruccion;
+            this.madre.profesion = response.data.profesion;
+            this.madre.trabaja = response.data.trabaja;
+            this.madre.l_trabajo = response.data.l_trabajo;
+            this.madre.d_trabajo = response.data.d_trabajo;
+            this.madre.tlf_trabajo = response.data.tlf_trabajo;
+            this.madre.tlf_habitacion = response.data.tlf_habitacion;
+            this.madre.tlf_movil = response.data.tlf_movil;
+            this.madre.otros_alumnos = response.data.otros_alumnos;
+            this.madre.cantidad = response.data.cantidad;
+            this.madre.grados = response.data.grados;
+            this.madre.status = false;
+          }).catch(e => {
+            this.madre.status = false;
+            console.log(e);
+          });
+      }
+    },
+
+    fetchPadre() {
+      this.padre.status = true;
+      let cedula = this.padre.cedula;
+      cedula = parseInt(cedula);
+      if (cedula >= 1000000) {
+        axios.get('https://bernardoacosta-da3f2.firebaseio.com/padres/' + this.padre.cedula + '.json')
+          .then(response => {
+            this.padre.nombre = response.data.nombre;
+            this.padre.apellido = response.data.apellido;
+            this.padre.nacionalidad = response.data.nacionalidad;
+            this.padre.estado_civil = response.data.estado_civil;
+            this.padre.instruccion = response.data.instruccion;
+            this.padre.profesion = response.data.profesion;
+            this.padre.trabaja = response.data.trabaja;
+            this.padre.l_trabajo = response.data.l_trabajo;
+            this.padre.d_trabajo = response.data.d_trabajo;
+            this.padre.tlf_trabajo = response.data.tlf_trabajo;
+            this.padre.tlf_habitacion = response.data.tlf_habitacion;
+            this.padre.tlf_movil = response.data.tlf_movil;
+            this.padre.status = false;
+          }).catch(e => {
+            this.padre.status = false;
+            console.log(e);
+          });
+      }
+    },
+
+    fetchRepresentante() {
+      this.representante.status = true;
+      let cedula = this.representante.cedula;
+      cedula = parseInt(cedula);
+      if (cedula >= 1000000) {
+        axios.get('https://bernardoacosta-da3f2.firebaseio.com/representantes/' + this.representante.cedula + '.json')
+          .then(response => {
+            this.representante.nombre = response.data.nombre;
+            this.representante.apellido = response.data.apellido;
+            this.representante.parentesco = response.data.parentesco;
+            this.representante.direccion = response.data.direccion;
+            this.representante.telefono = response.data.telefono;
+            this.representante.status = false;
+          }).catch(e => {
+            this.representante.status = false;
+            console.log(e);
+          });
+      }
+    },
+
+    fetchContacto1() {
+      this.contacto1.status = true;
+      let cedula = this.contacto1.cedula;
+      cedula = parseInt(cedula);
+      if (cedula >= 1000000) {
+        axios.get('https://bernardoacosta-da3f2.firebaseio.com/representantes/' + this.contacto1.cedula + '.json')
+          .then(response => {
+            this.contacto1.nombre = response.data.nombre;
+            this.contacto1.apellido = response.data.apellido;
+            this.contacto1.parentesco = response.data.parentesco;
+            this.contacto1.direccion = response.data.direccion;
+            this.contacto1.telefono = response.data.telefono;
+            this.contacto1.status = false;
+          }).catch(e => {
+            this.contacto1.status = false;
+            console.log(e);
+          });
+      }
+    },
+
+    fetchContacto2() {
+      this.contacto2.status = true;
+      let cedula = this.contacto2.cedula;
+      cedula = parseInt(cedula);
+      if (cedula >= 1000000) {
+        axios.get('https://bernardoacosta-da3f2.firebaseio.com/representantes/' + this.contacto2.cedula + '.json')
+          .then(response => {
+            this.contacto2.nombre = response.data.nombre;
+            this.contacto2.apellido = response.data.apellido;
+            this.contacto2.parentesco = response.data.parentesco;
+            this.contacto2.direccion = response.data.direccion;
+            this.contacto2.telefono = response.data.telefono;
+            this.contacto2.status = false;
+          }).catch(e => {
+            this.contacto2.status = false;
+            console.log(e);
+          });
+      }
+    },
 
     fecha() {
       let hoy = new Date();

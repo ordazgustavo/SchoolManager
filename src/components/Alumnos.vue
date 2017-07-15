@@ -186,11 +186,25 @@ export default {
     },
 
     fetchAlumnos() {
-      axios.get('http://slimapp/api/alumnos')
+      // axios.get('http://slimapp/api/alumnos')
+      //   .then(response => {
+      //     this.alumnos = response.data;
+      //   }).catch(e => {
+      //     this.errors.push(e);
+      //   });
+      axios.get('https://bernardoacosta-da3f2.firebaseio.com/alumnos.json')
         .then(response => {
-          this.alumnos = response.data;
+          let arregloAlumnos = [];
+          let data = response.data;
+          for (let key in data) {
+            data[key].cedula_escolar = key;
+            arregloAlumnos.push(data[key]);
+          }
+          console.log(arregloAlumnos);
+          this.alumnos = arregloAlumnos;
         }).catch(e => {
           this.errors.push(e);
+          console.log(e);
         });
     },
 
